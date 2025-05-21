@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { ITourCard } from '../model/types';
 import no_image from '@/../public/assets/images/no-image.png';
@@ -14,12 +15,14 @@ import {
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { getCurrencyHTML, getTimeDifference } from '../lib/utils';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   data: ITourCard;
 };
 
 const TourCard = ({ data }: Props) => {
+  const router = useRouter();
   const {
     imgSrc,
     hotelName,
@@ -44,13 +47,16 @@ const TourCard = ({ data }: Props) => {
   );
 
   return (
-    <article className='border rounded-2xl flex-col overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-all flex'>
+    <article
+      className='border-border border hover:border-foreground/25 rounded-2xl flex-col overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-all ease-in-out duration-300 flex bg-card text-card-foreground'
+      onClick={() => router.push(`/tour/${data.id}`)}
+    >
       <img
         src={imgSrc ?? no_image.src}
         alt={hotelName}
         className='w-full h-32 sm:h-48 object-cover'
       />
-      <div className='py-3 px-4 space-y-1 w-full'>
+      <div className='py-3 px-4 md:space-y-1 w-full'>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg'>{hotelName}</h3>
           <div className='flex text-sm text-muted-foreground'>
@@ -66,7 +72,7 @@ const TourCard = ({ data }: Props) => {
           <MapPinIcon className='size-4' /> {city}
         </p>
         <div className='flex justify-between gap-2 text-indigo-950'>
-          <div className='space-y-1 py-2  text-sm'>
+          <div className='md:space-y-1 py-2  text-sm'>
             {conveniences.map((convenience, index) => (
               <p
                 key={index}
@@ -80,7 +86,7 @@ const TourCard = ({ data }: Props) => {
             </p>
           </div>
 
-          <div className='space-y-1 py-2 text-sm'>
+          <div className='md:space-y-1 py-2 text-sm'>
             {roomConveniences.map((convenience, index) => (
               <p
                 key={index}
@@ -106,7 +112,7 @@ const TourCard = ({ data }: Props) => {
         </div>
         <div className='flex justify-between not-md:flex-col'>
           <div className='flex-1'>
-            <div className='w-full space-y-2.5 border-2 p-2'>
+            <div className='w-full space-y-0.5 md:space-y-2.5 h-full border-2 p-2'>
               <p className='text-sm flex justify-between items-center'>
                 <span>{flights.outbound.departureCity}</span>
                 <span>{flights.outbound.arrivalCity}</span>
@@ -133,7 +139,7 @@ const TourCard = ({ data }: Props) => {
             </div>
           </div>
           <div className='flex-1'>
-            <div className='w-full space-y-2.5 border-2 p-2'>
+            <div className='w-full space-y-0.5 md:space-y-2.5 h-full border-2 p-2'>
               <p className='text-sm flex justify-between items-center'>
                 <span>{flights.return.departureCity}</span>
                 <span>{flights.return.arrivalCity}</span>

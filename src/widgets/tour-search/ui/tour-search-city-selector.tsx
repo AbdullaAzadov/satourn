@@ -25,7 +25,7 @@ const TourSearchCitySelector = ({
       trigger={
         <div
           className={cn(
-            'p-1 md:p-4 flex flex-col gap-1 not-md:justify-center',
+            'p-1 md:p-2 md:px-4 flex flex-col gap-1 not-md:justify-center',
             className
           )}
         >
@@ -33,7 +33,7 @@ const TourSearchCitySelector = ({
             {isFrom ? 'Откуда' : 'Куда'}
           </span>
 
-          <div className={cn('text-sm md:text-base')}>
+          <div className={cn('text-sm md:text-base text-card-foreground')}>
             {selectedValue ? selectedValue : 'Выберите город'}
           </div>
         </div>

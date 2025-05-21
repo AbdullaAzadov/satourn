@@ -27,7 +27,7 @@ const TourSearchTouristsSelector = ({ className }: Props) => {
       <PopoverTrigger asChild>
         <div
           className={cn(
-            'flex flex-col gap-1 p-1 md:p-4 not-md:justify-center',
+            'flex flex-col gap-1 p-1 md:p-2 md:px-4 not-md:justify-center',
             className
           )}
         >
@@ -36,7 +36,7 @@ const TourSearchTouristsSelector = ({ className }: Props) => {
           </span>
           <div className='flex gap-2'>
             <UserIcon className='size-6' />
-            <p className='flex gap-2 items-center text-sm md:text-base'>
+            <p className='flex gap-2 items-center text-sm text-card-foreground md:text-base'>
               {adultsCount} {adultsCount === 1 ? 'взрослый' : 'взрослых'}
               {childrensCount > 0 && (
                 <>

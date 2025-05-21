@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Geologica } from 'next/font/google';
+import StoreProvider from '@/app/store-provider';
 
 const geologica = Geologica({
   subsets: ['latin', 'cyrillic', 'cyrillic-ext', 'latin-ext'],
@@ -18,18 +19,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`antialiased ${geologica.className} bg-gray-50`}>
-        <header className='bg-gradient-to-t from-indigo-500 to-indigo-600 shadow-sm py-4'>
-          <div className='container px-2 sm:px-3 md:px-4 max-w-7xl mx-auto'>
-            <h1 className='text-2xl text-white text-bold'>
-              Digital Travel Concierge
-            </h1>
-          </div>
-        </header>
-        <main className='min-h-screen container max-w-7xl px-2 sm:px-3 md:px-4 mx-auto py-8'>
-          {children}
-        </main>
-        <footer></footer>
+      <body className={`antialiased ${geologica.className} bg-background`}>
+        <StoreProvider>
+          <header className='bg-primary shadow-sm py-4'>
+            <div className='container px-2 sm:px-3 md:px-4 max-w-7xl mx-auto'>
+              <h1 className='text-2xl text-primary-foreground text-bold'>
+                Digital Travel Concierge
+              </h1>
+            </div>
+          </header>
+          <main className='min-h-screen container max-w-7xl px-2 sm:px-3 md:px-4 mx-auto py-8'>
+            {children}
+          </main>
+          <footer></footer>
+        </StoreProvider>
       </body>
     </html>
   );

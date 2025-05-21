@@ -26,12 +26,12 @@ const TourSearchDatePicker = ({ className }: Props) => {
       customTrigger={
         <div
           className={cn(
-            'p-1 md:p-4 flex flex-col gap-1 not-md:justify-center',
+            'p-1 md:p-2 md:px-4 flex flex-col gap-1 not-md:justify-center',
             className
           )}
         >
           <span className='text-xs md:text-sm text-muted-foreground'>Дата</span>
-          <div className={cn('flex items-center gap-2')}>
+          <div className={cn('flex items-center gap-2 text-card-foreground')}>
             <CalendarIcon className='size-5' />
             {selectedDate?.from ? (
               selectedDate.to ? (
